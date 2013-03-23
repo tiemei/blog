@@ -12,7 +12,7 @@ development:
   adapter: mysql2
   encoding: utf8
   reconnect: false
-  database: blog_development
+  database: blog_fish_development
   pool: 5
   username: tiemei
   password: jia
@@ -25,7 +25,7 @@ test:
   adapter: mysql2
   encoding: utf8
   reconnect: false
-  database: blog_test
+  database: blog_fish_test
   pool: 5
   username: tiemei
   password: jia
