@@ -8,13 +8,13 @@ class CreateArticles < ActiveRecord::Migration
 
       t.timestamps
       
-      t.references :users, :null => false 
+      t.references :user, :null => false 
     end
 
     add_foreign_key(:articles,
                     :users,
                     :dependent => :delete_all,
-                    :column => 'users_id',
+                    :column => 'user_id',
                     :name => 'fk_articles_users')
   end
 end

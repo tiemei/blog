@@ -20,21 +20,21 @@ ActiveRecord::Schema.define(:version => 20130323084624) do
     t.integer  "comment_num", :default => 0, :null => false
     t.datetime "created_at",                 :null => false
     t.datetime "updated_at",                 :null => false
-    t.integer  "users_id",                   :null => false
+    t.integer  "user_id",                    :null => false
   end
 
-  add_index "articles", ["users_id"], :name => "fk_articles_users"
+  add_index "articles", ["user_id"], :name => "fk_articles_users"
 
   create_table "comments", :force => true do |t|
-    t.text     "cotent",      :null => false
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
-    t.integer  "users_id"
-    t.integer  "articles_id", :null => false
+    t.text     "cotent",     :null => false
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+    t.integer  "user_id"
+    t.integer  "article_id", :null => false
   end
 
-  add_index "comments", ["articles_id"], :name => "fk_comments_articles"
-  add_index "comments", ["users_id"], :name => "fk_comments_users"
+  add_index "comments", ["article_id"], :name => "fk_comments_articles"
+  add_index "comments", ["user_id"], :name => "fk_comments_users"
 
   create_table "users", :force => true do |t|
     t.string   "name"
@@ -45,9 +45,9 @@ ActiveRecord::Schema.define(:version => 20130323084624) do
     t.datetime "updated_at", :null => false
   end
 
-  add_foreign_key "articles", "users", :name => "fk_articles_users", :column => "users_id"
+  add_foreign_key "articles", "users", :name => "fk_articles_users"
 
-  add_foreign_key "comments", "articles", :name => "fk_comments_articles", :column => "articles_id"
-  add_foreign_key "comments", "users", :name => "fk_comments_users", :column => "users_id"
+  add_foreign_key "comments", "articles", :name => "fk_comments_articles"
+  add_foreign_key "comments", "users", :name => "fk_comments_users"
 
 end

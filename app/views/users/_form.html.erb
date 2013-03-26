@@ -1,0 +1,24 @@
+<%= form_for(@user) do |f| %>
+  <% if @user.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user form being saved:</h2>
+
+      <ul>
+        <% @user.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="item">
+    <%= f.text_field :name, :value => '输入用户名', :class => 'input_default'  %>
+  </div>
+  <div class="item">
+    <%= f.text_field :email, :value => '输入邮箱', :class => 'input_default' %>
+  </div>
+  <div class="item">
+    <%= f.text_field :pwd, :value => '输入密码', :class => 'input_default' %>
+  </div>
+  <%= f.submit submit_text, :class => 'input_submit' %>
+<% end %>

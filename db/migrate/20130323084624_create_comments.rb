@@ -5,18 +5,18 @@ class CreateComments < ActiveRecord::Migration
 
       t.timestamps
       
-      t.references :users
-      t.references :articles, :null => false
+      t.references :user
+      t.references :article, :null => false
     end
     add_foreign_key(:comments,
                     :users,
                     :dependent => :delete_all,
-                    :column => 'users_id',
+                    :column => 'user_id',
                     :name => 'fk_comments_users')
     add_foreign_key(:comments,
                     :articles,
                     :dependent => :delete_all,
-                    :column => 'articles_id',
+                    :column => 'article_id',
                     :name => 'fk_comments_articles')
 
   end
