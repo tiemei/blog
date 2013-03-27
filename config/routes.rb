@@ -3,6 +3,7 @@ Blog::Application.routes.draw do
   root :to => 'home#index'
 
   # user
+  match 'login' => 'users#login', :via => :post
   resources :users
 
   # commment

@@ -8,6 +8,13 @@ h1, h2, h3, h4, h5, h6 {
   font-family: YanoneKaffeesatzRegular,Arial,Helvetica,sans-serif;
   color: #111111;
   }
+#container {
+  margin: 0 auto;
+  width: 800px;
+  }
+#footer {
+  margin: 20px 0;
+  }
 .input_default {
   margin: 10px 0;
   border-width: 0 0 2px 0;
@@ -17,8 +24,12 @@ h1, h2, h3, h4, h5, h6 {
   color: LightGrey;
   }
 .input_submit {
-  }
-#container {
-  margin: 0 auto;
-  width: 800px;
+  border: 1px solid #528641;
+  height: 27px;
+  padding: 5px 16px;
+  color: #fff;
+  border: 1px solid #528641;
+  background-color: #3fa156;
+  -webkit-border-radius: 3px; /* 兼容老的firefox */
+  border-radius: 3px;
   }

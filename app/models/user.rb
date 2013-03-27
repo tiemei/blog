@@ -44,4 +44,8 @@ class User < ActiveRecord::Base
   # ++++++++++++++++++++
   # TODO query api
   # ++++++++++++++++++++
+
+  def self.find_by_name(user)
+    User.where("name = ?", user.name)
+  end
 end

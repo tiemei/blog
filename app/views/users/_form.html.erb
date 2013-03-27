@@ -1,7 +1,7 @@
 <%= form_for(@user) do |f| %>
   <% if @user.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user form being saved:</h2>
+      <h2><%= pluralize(@user.errors.count, "error") %> 填写的表单不合法:</h2>
 
       <ul>
         <% @user.errors.full_messages.each do |msg| %>
@@ -12,13 +12,13 @@
   <% end %>
 
   <div class="item">
-    <%= f.text_field :name, :value => '输入用户名', :class => 'input_default'  %>
+    <%= f.text_field :name, :value => @user.name, :class => 'input_default focus_clear'  %>
   </div>
+    <div class="item">
+      <%= f.text_field :email, :value => @user.email, :class => 'input_default focus_clear' %>
+    </div>
   <div class="item">
-    <%= f.text_field :email, :value => '输入邮箱', :class => 'input_default' %>
-  </div>
-  <div class="item">
-    <%= f.text_field :pwd, :value => '输入密码', :class => 'input_default' %>
+    <%= f.text_field :pwd, :value => @user.pwd, :class => 'input_default  focus_clear' %>
   </div>
   <%= f.submit submit_text, :class => 'input_submit' %>
 <% end %>

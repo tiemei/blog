@@ -1,3 +1,14 @@
-<%= render 'form' :locals => { :submit_text => '登录' }%>
+<h1>登录</h1>
+
+<%= form_for(@user, :url => { :action => "login" }) do |f| %>
+  <%= flash[:notice] %>
+  <div class="item">
+    <%= f.text_field :name, :value => @user.name, :class => 'input_default focus_clear'  %>
+  </div>
+  <div class="item">
+    <%= f.text_field :pwd, :value => @user.pwd, :class => 'input_default  focus_clear' %>
+  </div>
+  <%= f.submit '登录', :class => 'input_submit' %>
+<% end %>
 
 
