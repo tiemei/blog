@@ -21,6 +21,8 @@ class UsersController < ApplicationController
   
   # POST /login
   # POST /login.json
+  # GET /login
+  # GET /login.json
   def login
     redirect_to session[:current_user] and return if session[:current_user]
 
@@ -28,21 +30,25 @@ class UsersController < ApplicationController
 
     # TODO 这大段的逻辑应该放在Controler还是Model中合适?
     if @user.pwd.blank? || @user.name.blank?
-      flash[:notice] = "账户名和密码不能为空"
+      flash.now[:notice] = "账户名和密码不能为空"
     else
       user = User.find_by_name(@user).first
       if user && ( @user.pwd == user.pwd )
         session[:current_user] = user
         redirect_to session[:current_user] and return
       else 
-        flash[:notice] = '用户名或密码错误'
+        flash.now[:notice] = '用户名或密码错误'
       end
     end
-    flash.now # only avaliable in this request
+  end
+  
+  # GET logout
+  def logout
+    session[:current_user] = nil
+    redirect_to '/login'
   end
 
   def show 
-
   end
     
   def index

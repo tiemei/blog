@@ -2,8 +2,13 @@ Blog::Application.routes.draw do
 
   root :to => 'home#index'
 
+  # home
+  match 'from' => 'home#from'
+  match 'to'   => 'home#to'
+
   # user
-  match 'login' => 'users#login', :via => :post
+  match 'login' => 'users#login', :via => [:post, :get]
+  match 'logout' => 'users#logout', :via => :get
   resources :users
 
   # commment

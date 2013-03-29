@@ -41,3 +41,9 @@ gem 'jquery-rails'
 # migrate foreign key
 # ++++++++++++++++++++
 gem 'foreigner'
+
+# ++++++++++++++++++++
+# markdown support
+# ++++++++++++++++++++
+gem 'redcarpet'
+gem 'coderay'

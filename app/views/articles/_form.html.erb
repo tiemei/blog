@@ -1,5 +1,7 @@
-<% form_for(@article) do |f| %>
-  <%= f.text_field :title %>
-  <%= f.text_area :content, :size => "24x6" %>
-  <%= f.submit '提交', :class => 'input_submit' %>
+<%= form_for(@article) do |f| %>
+  <div class="item">
+    <%= f.text_field :title %>
+  </div>
+  <%= f.text_area :content, :size => "100x100" %>
+  <%= f.submit submit_text, :class => 'input_submit' %>
 <% end %>
