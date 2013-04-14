@@ -1,3 +1,6 @@
+<% if @articles.empty? %>
+<h3>No blog now!&nbsp;&nbsp;<a class="green" href="/articles/new">new blog?</a></h3>
+<% end %>
 <% @articles.each do |article| %>
   <%= article.created_at %>
   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;

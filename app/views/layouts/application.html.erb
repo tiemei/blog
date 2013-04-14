@@ -26,9 +26,9 @@
         <div class="CadetBlue"><%= session[:current_user]['name'] %></div>
         <h4>ToolBox</h4>
         <ul>
-          <li><a href="/articles">Home</a></li>
-          <li><a href="/articles/new">New Blog</a></li>
-          <li><a href="/logout">logout</a></li>
+          <li><a class="green" href="/articles">Home</a></li>
+          <li><a class="green" href="/articles/new">New Blog</a></li>
+          <li><a class="green" href="/logout">logout</a></li>
           <li>About</li>
         </ul>
       </div>
@@ -36,7 +36,15 @@
   </div>
   <div class="clear" />
   <div id="footer">
-    <a href="https://github.com/tiemei/blog">开源主页</a>
+    <!-- 三色线效果 -->
+    <div class="three first"></div>
+    <div class="three second"></div>
+    <div class="three third"></div>
+    <div class="clear" />
+
+    <a href="https://github.com/tiemei/blog" class="green">Open source Page</a>
+    |
+    <a href="http://ruby-china.org/tiemei" class="green">Powered by @tiemei</a>
   </div>
 </div>
 </body>

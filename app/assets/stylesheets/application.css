@@ -80,7 +80,9 @@ ul {
   width: 800px;
   }
 #footer {
-  margin: 20px 0;
+  padding: 40px 0;
+  text-align: center;
+  font-size: 12px;
   }
 #content .left {
   font-size: 85%;  
@@ -122,3 +124,28 @@ ul {
   -webkit-border-radius: 3px; /* 兼容老的firefox */
   border-radius: 3px;
   }
+
+/* 三色线效果 */
+.three {
+  float: left;
+  width: 30%;  
+  border-style: solid none none none;
+  bolder-top-width: 2px;
+}
+.first {
+  border-top-color: green;  
+}
+.second {
+  margin: 0 40px 0 40px;  
+}
+.third {
+  border-top-color: CadetBlue;  
+}
+
+/* toolbox样式 */
+#content h4 {
+  margin: 1em 0 0 0;
+}
+#content ul {
+  margin: 2px 0 0 0;
+}
