@@ -3,9 +3,9 @@ applications:
 - name: blog
   framework: rails3
   runtime: ruby19
-  memory: 1G
+  memory: 1824M
   instances: 1
-  url: tiemei-blog.${target-base}
+  url: rainblog.${target-base}
   path: .
   services: 
     blog_fish_production: 

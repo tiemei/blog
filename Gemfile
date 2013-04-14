@@ -1,4 +1,4 @@
-source 'https://rubygems.org'
+source 'http://ruby.taobao.org'
 
 gem 'rails', '3.2.12'
 
@@ -47,3 +47,8 @@ gem 'foreigner'
 # ++++++++++++++++++++
 gem 'redcarpet'
 gem 'coderay'
+
+# ++++++++++++++++++++
+# json
+# ++++++++++++++++++++
+gem 'json_pure'

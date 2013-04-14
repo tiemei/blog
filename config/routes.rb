@@ -15,6 +15,7 @@ Blog::Application.routes.draw do
   resources :comments
 
   # article
+  match 'articles/:id/delete' => 'articles#destroy', :via => :get
   resources :articles 
 
 
