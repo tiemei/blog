@@ -1,5 +1,9 @@
 # encoding: UTF-8
 class UsersController < ApplicationController
+  layout "login", :only => [:login, :new, :create]
+
+  skip_before_filter :require_login, :only => [:login, :new, :create]
+  before_filter :landed, :only => [:login, :new, :create]
 
   # GET /users/new
   def new
@@ -14,7 +18,7 @@ class UsersController < ApplicationController
     @user = User.new(params[:user])
 
     if @user.save
-      render 'login'
+      redirect_to '/login'
     else
       render 'new' # 不用redirect_to :back的原因是，这么做原来填写的表单字段保留
     end
@@ -51,9 +55,17 @@ class UsersController < ApplicationController
   end
 
   def show 
+    redirect_to '/articles'
   end
   
   # GET /users
   def index
+  end
+
+  private 
+  def landed
+    if session[:current_user_id]
+      redirect_to "/articles"
+    end
   end
 end

@@ -1,5 +1,4 @@
-<h1>登录</h1>
-
+<h1>Login</h1>
 <%= form_for(@user, :url => { :action => "login" }) do |f| %>
   <%= flash[:notice] %>
   <div class="item">
@@ -10,5 +9,5 @@
   </div>
   <%= f.submit '登录', :class => 'input_submit' %>
 <% end %>
-
+new user? <a href="users/new" class="green">regist</a><br />
 

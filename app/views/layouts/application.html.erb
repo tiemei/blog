@@ -11,7 +11,7 @@
 <div id="container">
   <div id="header">
     <div id="logo">
-      <h1>FishBlog</h1>
+      <h1>RainBlog</h1>
     </div>
     <%= yield :header %>
   </div>
@@ -19,13 +19,20 @@
     <div class="left">
       <%= yield %>
     </div>
-    <div class="right">
-      <h4>Pages</h4>
-      <ul>
-        <li><a href="/articles">Home</a></li>
-        <li>About</li>
-      </ul>
-    </div>
+    <% if(content_for?(:right)) %>
+      <%= yield(:right) %>
+    <% else %>
+      <div class="right">
+        <div class="CadetBlue"><%= session[:current_user]['name'] %></div>
+        <h4>ToolBox</h4>
+        <ul>
+          <li><a href="/articles">Home</a></li>
+          <li><a href="/articles/new">New Blog</a></li>
+          <li><a href="/logout">logout</a></li>
+          <li>About</li>
+        </ul>
+      </div>
+    <% end %>
   </div>
   <div class="clear" />
   <div id="footer">
