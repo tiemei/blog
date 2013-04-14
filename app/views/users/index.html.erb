@@ -1,4 +1,3 @@
-name:<%= @user.name %>
-mail:<%= @user.email %>
-pwd:<%= @user.pwd %>
-id:<%= @user.id %>
+name:<%= session[:current_user]['name'] %>
+mail:<%= session[:current_user]['mail'] %>
+id:<%= session[:current_user_id] %>

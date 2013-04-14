@@ -1,0 +1,7 @@
+<% @articles.each do |article| %>
+  <%= article.created_at %>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  <a href="articles/<%= article.id %>/delete" class="green">delete</a>&nbsp;
+  <a href="<%= edit_article_path(article.id) %>" class="green">edit</a>
+  <h4><a href="<%= article_path(article.id) %>"><%= article.title %></a></h4>
+<% end %>

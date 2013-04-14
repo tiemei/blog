@@ -1,3 +1,4 @@
+# encoding: UTF-8
 class UsersController < ApplicationController
 
   # GET /users/new
@@ -24,7 +25,7 @@ class UsersController < ApplicationController
   # GET /login
   # GET /login.json
   def login
-    redirect_to session[:current_user] and return if session[:current_user]
+    redirect_to user_path(session[:current_user_id]) and return if session[:current_user_id]
 
     @user = User.new(params[:user])
 
@@ -34,8 +35,9 @@ class UsersController < ApplicationController
     else
       user = User.find_by_name(@user).first
       if user && ( @user.pwd == user.pwd )
-        session[:current_user] = user
-        redirect_to session[:current_user] and return
+        session[:current_user] = user.attributes
+        session[:current_user_id] = user.id
+        redirect_to user_path(session[:current_user_id]) and return
       else 
         flash.now[:notice] = '用户名或密码错误'
       end
@@ -44,13 +46,14 @@ class UsersController < ApplicationController
   
   # GET logout
   def logout
-    session[:current_user] = nil
+    session[:current_user], session[:current_user_id] = nil, nil
     redirect_to '/login'
   end
 
   def show 
   end
-    
+  
+  # GET /users
   def index
   end
 end

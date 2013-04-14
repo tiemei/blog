@@ -10,11 +10,24 @@
 <body>
 <div id="container">
   <div id="header">
+    <div id="logo">
+      <h1>FishBlog</h1>
+    </div>
     <%= yield :header %>
   </div>
   <div id="content">
-    <%= yield %>
+    <div class="left">
+      <%= yield %>
+    </div>
+    <div class="right">
+      <h4>Pages</h4>
+      <ul>
+        <li><a href="/articles">Home</a></li>
+        <li>About</li>
+      </ul>
+    </div>
   </div>
+  <div class="clear" />
   <div id="footer">
     <a href="https://github.com/tiemei/blog">开源主页</a>
   </div>

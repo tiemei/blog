@@ -1,3 +1,4 @@
+# encoding: UTF-8
 class User < ActiveRecord::Base
   attr_accessible :about, :email, :name, :pwd
 
@@ -34,8 +35,8 @@ class User < ActiveRecord::Base
   # association
   # ++++++++++++++++++++
 
-  has_many :articles, dependent: :delete_all
-  has_many :comments, dependent: :delete_all
+  has_many :articles, :dependent => :delete_all
+  has_many :comments, :dependent => :delete_all
 
   # 1. has_many asso obj 自动save，如果parent obj还没有
   # save，asso obj也不会自动save，制动调用了parent obj

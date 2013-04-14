@@ -1,13 +1,80 @@
+@font-face {
+  font-family: DroidSansRegular;
+  src: url('DroidSans.ttf');
+}
+@font-face {
+  font-family: DroidSansBold;
+  src: url('DroidSans-bold.ttf');
+}
+@font-face {
+  font-family: YanoneKaffeesatzRegular;
+  src: url('YanoneKaffeesatz-Regular.ttf');
+}
+@font-face {
+  font-family: YanoneKaffeesatzBold;
+  src: url('YanoneKaffeesatz-Bold.ttf');
+}
+
 body {
   background: url("bg.png") repeat-x scroll 0 0 #FFFFFF;
   margin: 0;
-  text-align: center;
+  padding: 0;
+  line-height: 2.0em;
+  font-family: DroidSansRegular,Arial,Helvetica,sans-serif;
+  overflow-x: hidden;
+  overflow-y: scroll;
+  vertical-align: baseline;
   }
 h1, h2, h3, h4, h5, h6 {
-  font-weight: bold;
-  font-family: YanoneKaffeesatzRegular,Arial,Helvetica,sans-serif;
+  font-family: YanoneKaffeesatzRegular, Arial, Helvetica, sans-serif;
   color: #111111;
+  text-align: left;
+  margin: 0;
+  padding: 0;
   }
+h1 {
+  font-size: 3em;
+  line-height: 1;
+  margin: 15px 0;
+}
+h2 {
+  font-size: 2em;
+  margin-bottom: 0.75em;
+  padding-top: 20px;
+}
+h3 {
+  font-size: 1.5em;
+  line-height: 1;
+  margin-bottom: 1em;
+}
+h4 {
+  font-size: 1.7em;
+  line-height: 1.25;
+  margin-bottom: 1em;
+}
+h5 {
+  font-size: 1em;
+  font-weight: bold;
+  margin-bottom: 1.5em;
+}
+h6 {
+  font-size: 1em;
+  font-weight: bold;
+}
+a {
+  text-decoration: none; /* 去掉下划线 */  
+  color: #111111;
+}
+li {
+  list-style-type:none;
+  display: list-item;  
+  font-size: 14px;
+}
+ul {
+  display: block;  
+  padding-left: 0;
+}
+
 #container {
   margin: 0 auto;
   width: 800px;
@@ -15,6 +82,28 @@ h1, h2, h3, h4, h5, h6 {
 #footer {
   margin: 20px 0;
   }
+#content .left {
+  font-size: 85%;  
+}
+.left {
+  float: left;  
+}
+.right {
+  float: right;  
+}
+.clear {
+  clear: both; 
+}
+
+.green {
+  color: green;  
+}
+.blue {
+  color: blue;
+}
+.CadetBlue {
+  color: CadetBlue;
+}
 .input_default {
   margin: 10px 0;
   border-width: 0 0 2px 0;
