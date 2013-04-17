@@ -16,6 +16,7 @@ Blog::Application.routes.draw do
 
   # article
   match 'articles/:id/delete' => 'articles#destroy', :via => :get
+  match 'articles/month/:month' => 'articles#month', :via => :get
   resources :articles 
 
 

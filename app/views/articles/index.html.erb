@@ -8,3 +8,13 @@
   <a href="<%= edit_article_path(article.id) %>" class="green">edit</a>
   <h4><a href="<%= article_path(article.id) %>"><%= article.title %></a></h4>
 <% end %>
+<% content_for :right_below do %>
+  <div id="right-below">
+    <h4>Month</h4>
+    <ul>
+      <% @month_list.each do |month, count| %>
+        <li><a href="/articles/month/<%=month%>" class="green"><%=month%>月(<%=count%>)</a></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
