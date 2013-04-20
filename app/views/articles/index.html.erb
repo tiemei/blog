@@ -9,11 +9,19 @@
   <h4><a href="<%= article_path(article.id) %>"><%= article.title %></a></h4>
 <% end %>
 <% content_for :right_below do %>
-  <div id="right-below">
+  <div id="right-below-month">
     <h4>Month</h4>
     <ul>
       <% @month_list.each do |month, count| %>
-        <li><a href="/articles/month/<%=month%>" class="green"><%=month%>月(<%=count%>)</a></li>
+        <li><a href="/articles/month/<%=month%>" class="green"><%=month%>月</a>(<%=count%>)</li>
+      <% end %>
+    </ul>
+  </div>
+  <div id="right-below-tags">
+    <h4>Tags</h4>
+    <ul>
+      <% @tags.each do |name, count| %>
+        <li><a href="/tags/<%=u name %>" class="green"><%=name%></a>(<%=Tag.countAritlces(session[:current_user_id], name)%>)</li>
       <% end %>
     </ul>
   </div>

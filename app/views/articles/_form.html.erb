@@ -1,6 +1,14 @@
 <%= form_for(@article) do |f| %>
   title:<br />
   <%= f.text_field :title %><br />
+  tags(逗号分隔):<br />
+  <%= 
+  if not @article.new_record?
+    text_field_tag(:tags, Article.join_tags(@article.id)) 
+  else
+    text_field_tag(:tags) 
+  end
+  %><br />
   cotent:<br />
   <%= f.text_area :content, :size => "90x50" %><br />
   <%= f.submit submit_text, :class => 'input_submit' %>

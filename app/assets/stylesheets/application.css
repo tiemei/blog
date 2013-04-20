@@ -107,6 +107,9 @@ ul {
 .CadetBlue {
   color: CadetBlue;
 }
+.black {
+  color: black;  
+}
 .input_default {
   margin: 10px 0;
   border-width: 0 0 2px 0;

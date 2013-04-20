@@ -37,6 +37,7 @@ class User < ActiveRecord::Base
 
   has_many :articles, :dependent => :delete_all
   has_many :comments, :dependent => :delete_all
+  has_many :tags, :dependent => :delete_all
 
   # 1. has_many asso obj 自动save，如果parent obj还没有
   # save，asso obj也不会自动save，制动调用了parent obj

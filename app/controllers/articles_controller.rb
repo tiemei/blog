@@ -10,6 +10,16 @@ class ArticlesController < ApplicationController
     @article = User.find(session[:current_user_id]).articles.build(params[:article])
 
     if @article.save
+      # TODO 事务控制
+      # 逗号分隔的tag分别存表
+      for tag in params[:tags].split(',') do
+        tag = @article.tags.build({"name"=>tag})
+        tag.user_id = session[:current_user_id]
+
+        if not tag.save
+          render 'new'
+        end
+      end
       flash[:article] = @article
       
       redirect_to article_path(@article.id)
@@ -25,9 +35,12 @@ class ArticlesController < ApplicationController
 
   # GET /articles
   def index
-    @articles = User.find(session[:current_user_id]).articles
+    user = User.find(session[:current_user_id])
+    @articles = user.articles
     # 每月文章
-    @month_list = sort_by_month(@articles)
+    @month_list = Article.sort_by_month(@articles)
+    # 用户所有标签 
+    @tags = Tag.user_tag(session[:current_user_id])
   end
 
   # GET /articles/delete/:id
@@ -45,6 +58,22 @@ class ArticlesController < ApplicationController
   def update
     @article = Article.find(params[:id])
     if @article.update_attributes(params[:article])
+      # 与已有的tag去重
+      now_tags_name = []
+      @article.tags.each do |tag|
+        now_tags_name << tag.name
+      end
+      new_tags_name = params[:tags].split(',') - now_tags_name
+
+      # 逗号分隔的tag分别存表
+      for tag in new_tags_name do
+        tag = @article.tags.build({"name"=>tag})
+        tag.user_id = session[:current_user_id]
+
+        if not tag.save
+          redirect_to edit_article_path(params[:id])
+        end
+      end
       redirect_to article_path(params[:id])
     else
       redirect_to edit_article_path(params[:id])
@@ -55,7 +84,8 @@ class ArticlesController < ApplicationController
   # GET /articles/month/:month
   def month
     @articles = []
-    articles_all = User.find(session[:current_user_id]).articles
+    user = User.find(session[:current_user_id])
+    articles_all = user.articles
     articles_all.each do |a|
       key = a.created_at.year.to_s + '-' + a.created_at.month.to_s
       if key == params[:month]
@@ -63,24 +93,9 @@ class ArticlesController < ApplicationController
       end
     end
     # 每月文章
-    @month_list = sort_by_month(articles_all)
+    @month_list = Article.sort_by_month(articles_all)
+    # 用户标签
+    @tags = Tag.user_tag(session[:current_user_id])
     render 'index'
   end
-
-  private 
-  def sort_by_month(articles)
-    month_list = {} # {"2013-4" => 4, "2013-5" => 5, ..}
-    articles.each do |a|
-      key = a.created_at.year.to_s + '-' + a.created_at.month.to_s 
-      if month_list[key]
-        month_list[key] = month_list[key] + 1
-      else
-        month_list[key] = 1
-      end
-    end
-    month_list.sort do |a,b|
-      b[0] <=> a[0]
-    end
-  end
-
 end
