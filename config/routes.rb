@@ -19,6 +19,8 @@ Blog::Application.routes.draw do
   match 'articles/month/:month' => 'articles#month', :via => :get
   resources :articles 
 
+  # tag
+  match 'tags/:tag' => 'tags#show', :via => :get
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
